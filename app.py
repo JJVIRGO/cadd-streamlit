@@ -1,5 +1,10 @@
 import streamlit as st
-from streamlit_ketcher import st_ketcher
+try:
+    from streamlit_ketcher import st_ketcher
+    KETCHER_AVAILABLE = True
+except ImportError:
+    KETCHER_AVAILABLE = False
+    st.warning("streamlit-ketcher not available, using text input only")
 import pandas as pd
 import os
 import re
@@ -771,6 +776,7 @@ def show_homepage():
         <h1>🧬 2025 CADD课程实践平台</h1>
         <p style="font-size: 1.2em;">现代化计算机辅助药物设计工具套件</p>
         <p>集成多种机器学习模型和交互式可视化</p>
+        <p>created by 2251248 张珈境</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -1428,7 +1434,12 @@ def show_activity_prediction():
         )
         
         # 分子编辑器
-        smile_code = st_ketcher(smiles_input)
+        if KETCHER_AVAILABLE:
+            smile_code = st_ketcher(smiles_input)
+        else:
+            smile_code = smiles_input
+            st.info("分子编辑器不可用，请直接输入SMILES字符串")
+        
         st.markdown(f"**当前分子SMILES:** `{smile_code}`")
         
         if smile_code and st.button("🔍 开始预测", type="primary"):
