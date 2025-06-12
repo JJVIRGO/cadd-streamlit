@@ -1,0 +1,22 @@
+{
+  "creation_time": "2025-06-12T14:36:20.858641",
+  "best_model": "XGBoost",
+  "best_auc": 0.9223623092236231,
+  "best_accuracy": 0.9358108108108109,
+  "models_count": 2,
+  "models_list": [
+    "随机森林",
+    "XGBoost"
+  ],
+  "data_info": {
+    "fingerprint_type": "maccs",
+    "test_size": 0.2,
+    "cleaning_info": {
+      "original_samples": 1480,
+      "removed_samples": 0,
+      "final_samples": 1480,
+      "nan_in_features": 0,
+      "nan_in_targets": 0
+    }
+  }
+}
